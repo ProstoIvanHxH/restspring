@@ -36,6 +36,8 @@ public class CityService {
                             parts[4],
                             null, // временно, заполним позже
                             null,
+                            null,
+                            10,
                             null
                     ));
                 }
@@ -58,6 +60,7 @@ public class CityService {
     }
 
 
+
     private List<CityInfo> enrichCitiesWithTime(List<CityInfo> cityList) {
         List<CityInfo> updated = new ArrayList<>();
         for (CityInfo city : cityList) {
@@ -70,6 +73,7 @@ public class CityService {
     private CityInfo enrichCityWithTime(CityInfo city) {
         try {
             ZonedDateTime now = ZonedDateTime.now(ZoneId.of(city.getTimezone()));
+
             city.setLocalTime(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             city.setUtcTime(Instant.now().toString()); // UFC-формат (ISO 8601, UTC)
             city.setTimeDescription(city.getCity()+": "+now.format(DateTimeFormatter.ofPattern("HH:mm"))+" ("+now.getOffset().toString()+" UTC)");

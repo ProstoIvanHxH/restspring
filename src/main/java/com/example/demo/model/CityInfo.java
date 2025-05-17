@@ -17,4 +17,9 @@ public class CityInfo {
     private String localTime;  // текущее местное время
     private String utcTime;    // текущее UTC время в формате UFC (ISO 8601)
     private String timeDescription;
+    private long population; // население города
+    private String imageUrl; // URL изображения города
+
+
+
 }

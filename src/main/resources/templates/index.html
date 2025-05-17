@@ -1,0 +1,9 @@
+<form th:action="@{/search}" method="get">
+    <input type="text" name="query" placeholder="Найти город...">
+    <button type="submit">Поиск</button>
+</form>
+<div th:each="city : ${cities}">
+
+    <h3 th:text="${city.getCity}"></h3>
+    <a th:href="@{/city/{id}(name=${city.getCity})}">Подробнее</a>
+</div>
